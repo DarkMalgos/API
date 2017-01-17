@@ -6,46 +6,17 @@
         <title>ZicMix</title>
     </head>
     <body>
-        <header>
-			<div class="bigBackground">
-				<div class="searchBlock">
-					<img id="logo" src="images/logo-01.png">
-            		<div class="searchBar">
-						<input type="text" />
-						<input type="submit" value="Go">
-						<div class="buttonsContainer">
-							<button type="button" class="searchButton">Artist</button>
-							<button type="button" class="searchButton">Song</button>
-							<button type="button" class="searchButton">Album</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="searchResultsContainer">
-				<h1 id="searchQueryName">NOM DE LA RECHERCHE</h1>
-				<div class="columnYoutube">
-					<img id="logoYoutube" src="">
-				</div>
-				<div class="columnSoundClound">
-					<img id="logoSoundCloud" src="">
-				</div>
-			</div>
-			<div class="searchFooterContainer">
-				<div class="leftContainer">
-					<img id="footerLogo" src="images/logo-01.png">
-				</div>
-				<div class="rightContainer">
-					<div class="searchBar">
-						<input type="text" />
-						<input type="submit" value="Go">
-						<div class="buttonsContainer">
-							<button type="button" class="searchButton">Artist</button>
-							<button type="button" class="searchButton">Song</button>
-							<button type="button" class="searchButton">Album</button>
-						</div>
-					</div>
-				</div>
-			</div>
-        </header>
-    </body>
+        <div id="home">
+            <video src="video/home.mp4" type="video/mp4" autoplay loop></video>
+            <img src="images/logo-01.png">
+            <input id="search" type="text" placeholder="name of tracks, artist or album">
+            <button>GO !</button>
+            <div id="radio-button">
+                <input id="artist"type="radio" placeholder="Artist">
+                <input id="track" type="radio">
+                <input id="album" type="radio">
+            </div>
+        </div>
+        <div id="toto"></div>
+        </body>
 </html>
