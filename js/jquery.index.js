@@ -12,3 +12,17 @@ function domready{
     
 }
 $(document).ready(domready);
+
+var allRadios = document.getElementsByName('re');
+var booRadio;
+
+allRadios[x].onclick = function() {
+    for(var x = 0; x < allRadios.length; x++){
+        if(booRadio == this) {
+            this.checked = false;
+            booRadio = null;
+        } else {
+            booRadio = this;
+        }
+    }
+};
