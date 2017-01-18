@@ -49,20 +49,3 @@ function domready() {
     });
 }
 $(document).ready(domready);
-
-<<<<<<< HEAD
-=======
-var allRadios = document.getElementsByName('re');
-var booRadio;
-
-allRadios[x].onclick = function() {
-    for(var x = 0; x < allRadios.length; x++){
-        if(booRadio == this) {
-            this.checked = false;
-            booRadio = null;
-        } else {
-            booRadio = this;
-        }
-    }
-};
->>>>>>> 556c052d9fda37bd4cd11848ab8cb2767610739c
