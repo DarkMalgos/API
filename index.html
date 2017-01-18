@@ -14,27 +14,13 @@
             	<button>GO !</button>
 			</div>
             <div id="radio-button">
-                <input id="artist"type="radio" placeholder="Artist" name="re">
-                <input id="track" type="radio" name="re">
-                <input id="album" type="radio" name="re">
+                <input id="artist"type="radio" placeholder="Artist" name="re" value="0">
+                <input id="track" type="radio" name="re" value="1">
+                <input id="album" type="radio" name="re" value="">
             </div>
-			<script type="text/javascript">
-				var allRadios = document.getElementsByName('re');
-				var booRadio;
-				var x = 0;
-				for(x = 0; x < allRadios.length; x++){
-
-					allRadios[x].onclick = function() {
-						if(booRadio == this){
-							this.checked = false;
-							booRadio = null;
-						}else{
-							booRadio = this;
-						}
-					};
-				}
-    		</script>
         </div>
         <div id="toto"></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/jquery.index.js"></script>
         </body>
 </html>
