@@ -63,8 +63,7 @@ button {
     height: auto;
     
     position: relative;
-    
-    top: 55%;
+   
     left: 50%;
     transform: translateX(-50%)translateY(-50%);
     
