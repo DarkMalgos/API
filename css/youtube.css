@@ -1,0 +1,119 @@
+* {
+    margin: 0; 
+    padding: 0; 
+}
+
+@fontface{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#youtube {
+    width: 100%;
+    height: 378px;
+    background-color: black; 
+    position: relative; 
+}
+
+
+iframe {
+    left: 50%; 
+    transform: translateX(-50%); 
+    position: absolute
+    
+}
+
+#disco_bio {
+    width: 100%; 
+    height: 509px; 
+    margin-top: 40px; 
+    position: relative; 
+}
+
+#content {
+    width: 95%;
+    height: 450px;
+    margin: 40px auto; 
+    border: solid 2px #e52d27;    
+}
+
+a {
+    display: inline-block;
+    color: black; 
+    padding: 18px;   
+    margin-right: 15px; 
+    font-family: 'Montserrat'; 
+    list-style: none; 
+    text-decoration: none; 
+}
+
+a:hover {
+    background-color: #e52d27;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+}
+
+a:focus {
+    background-color: #e52d27;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+}
+
+ul {
+    margin-left: 30px;
+    margin-bottom: -40px; 
+}
+
+
+.swiper-container {
+    width: 92.4%;
+    margin-top: 90px; 
+    
+}
+
+.swiper-container img {
+    width: 250px; 
+}
+
+.swiper-slide {
+    text-align: center;
+    background: #fff;
+    
+     /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-container img:hover {
+    color: black; 
+    opacity: 0.8; 
+    
+}
+
+.swiper-pagination { 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    padding: 15px; 
+}
+
+
+
+footer {
+    height: 280px; 
+    width: 100%;
+    background-color: #e52d27; 
+    
+    margin-top: 50px; 
+    
+}
+
