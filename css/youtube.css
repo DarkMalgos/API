@@ -36,7 +36,19 @@ iframe {
     border: solid 2px #e52d27;    
 }
 
-a {
+#disco {
+    background-color: #e52d27;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+    display: inline-block;
+    padding: 18px;   
+    margin-right: 15px; 
+    font-family: 'Montserrat'; 
+    list-style: none; 
+    text-decoration: none; 
+}
+
+#bio {
     display: inline-block;
     color: black; 
     padding: 18px;   
@@ -46,13 +58,7 @@ a {
     text-decoration: none; 
 }
 
-a:hover {
-    background-color: #e52d27;
-    color: white;
-    border-radius: 5px 5px 0px 0px;
-}
-
-a:focus {
+#bio:hover {
     background-color: #e52d27;
     color: white;
     border-radius: 5px 5px 0px 0px;
@@ -63,7 +69,7 @@ ul {
     margin-bottom: -40px; 
 }
 
-
+/*SWIPPER*/
 .swiper-container {
     width: 92.4%;
     margin-top: 90px; 
@@ -91,12 +97,6 @@ ul {
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-}
-
-.swiper-container img:hover {
-    color: black; 
-    opacity: 0.8; 
-    
 }
 
 .swiper-pagination { 
