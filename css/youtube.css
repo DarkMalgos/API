@@ -1,6 +1,7 @@
 * {
     margin: 0; 
-    padding: 0; 
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 @fontface{
@@ -33,7 +34,16 @@ iframe {
     width: 95%;
     height: 450px;
     margin: 40px auto; 
-    border: solid 2px #e52d27;    
+    border: solid 2px #e52d27;
+    display: block;
+}
+
+#content2 {
+    width: 95%;
+    height: 450px;
+    margin: 40px auto; 
+    border: solid 2px #e52d27;
+    display: none;
 }
 
 #disco {
@@ -63,8 +73,7 @@ iframe {
     color: white;
     border-radius: 5px 5px 0px 0px;
 }
-
-ul {
+#menu{
     margin-left: 30px;
     margin-bottom: -40px; 
 }
@@ -113,7 +122,132 @@ footer {
     width: 100%;
     background-color: #e52d27; 
     
-    margin-top: 50px; 
+    margin-top: 50px;
+    
+    display: inline-block;
     
 }
+
+#logo_social{
+    position: relative;
+}
+
+#logo{
+    width: 300px;
+    height: auto;
+    margin-top: 30px;
+    margin-left: 60px;
+    display: inline-block;
+}
+
+
+
+.social{
+    width: 50px;
+    height: auto;
+    margin-left: 30px
+    
+}
+footer ul li{
+    display: inline;
+}
+#searchBar {
+    float: right; 
+    margin-top: 95px;
+    margin-right: 40px;
+}
+#searchBar input{
+    width: 750px;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    padding-left: 10px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+#searchBar button{
+    width: 70px;
+    height: 50px;
+    margin-left: -5px;
+    background-color: white;
+    color: #e52d27;
+    border: none;
+    padding-right: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#albumImg{
+    margin-left: 25px;
+    margin-top : 25px;
+    width: 405px;
+    height: auto;
+    animation: anim1 2s; 
+    animation-fill-mode: forwards;
+    float: left;
+}
+
+#name-album{
+    font-size: 30px;
+    float: left; 
+    margin-left: 20px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+#name-artist{
+    font-size: 30px;
+    float: left; 
+    margin-top: 30px;
+    
+    
+}
+
+#content2 .num_track li {
+    display: inline-block;
+    padding-right: 20px; 
+}
+#content2 .num_track li {
+    margin-left: 20px;
+    display: inline-block;
+    list-style: none;
+}
+
+.num_track{
+    padding-right: 20px;
+    list-style: none;
+    position: relative;
+}
+
+#category{
+    margin-top: 90px;
+    margin-bottom: 20px;
+}
+
+.number_tracks{
+    width: 2%;
+    text-align: right;
+}
+
+.name_tracks{
+    width: 20%;
+    text-align: left;
+}
+
+.play{
+    width: 5%;
+}
+
+@-webkit-keyframes anim1 {
+    from {
+        width: 250px;             
+    }
+    to   {
+        width: 405px;         
+    }
+}
+ 
+
+
 
