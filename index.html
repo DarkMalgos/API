@@ -9,13 +9,31 @@
         <div id="home">
             <video src="video/home.mp4" type="video/mp4" autoplay loop></video>
             <img src="images/logo-01.png">
-            <input id="search" type="text" placeholder="name of tracks, artist or album">
-            <button>GO !</button>
+			<div class="searchBar">
+            	<input id="search" type="text" placeholder="name of tracks, artist or album">
+            	<button>GO !</button>
+			</div>
             <div id="radio-button">
-                <input id="artist"type="radio" placeholder="Artist">
-                <input id="track" type="radio">
-                <input id="album" type="radio">
+                <input id="artist"type="radio" placeholder="Artist" name="re">
+                <input id="track" type="radio" name="re">
+                <input id="album" type="radio" name="re">
             </div>
+			<script type="text/javascript">
+				var allRadios = document.getElementsByName('re');
+				var booRadio;
+				var x = 0;
+				for(x = 0; x < allRadios.length; x++){
+
+					allRadios[x].onclick = function() {
+						if(booRadio == this){
+							this.checked = false;
+							booRadio = null;
+						}else{
+							booRadio = this;
+						}
+					};
+				}
+    		</script>
         </div>
         <div id="toto"></div>
         </body>
