@@ -8,7 +8,77 @@
 #notes            : Only working on search engine
 =============================================================*/
 
-function domready{
+function domready() {
+    var allRadios = document.getElementsByName('rad'),
+        allLabel = document.getElementsByName('lab'),
+        booRadio = null;
     
+    console.log(allRadios);
+    for(var x = 0; x < allLabel.length; x++){
+        allLabel[x].onclick = function() {
+            if (booRadio != null) {
+                $(booRadio).css('background', '#ff5500');
+                $(booRadio).css('color', 'white');
+            }  
+            booRadio = this;
+            $(this).css('background', 'white');
+            $(this).css('color', '#ff5500');
+            var rad = $(this).attr('value');
+            $('#' + rad).click();
+        };
+    }
+    
+    
+    
+    $('button').click(function (){
+        if ($('#search').val() != undefined && $('#search').val() != ''){
+            for (var i=0; i < allRadios.length; i++){
+                if ($('input[name=re]:checked', '#radio-button').val() != undefined){
+                    if (i == 0 && $('input[name=re]:checked', '#radio-button').val() == "0")
+                        console.log('artist');
+                        //search_artist($('#search').value);
+                    else if (i == 1 && $('input[name=re]:checked', '#radio-button').val() == "1") {
+                        var q = $('#search').val();
+                        youtube_track(q);
+                    }
+                    else if (i == 2  && $('input[name=re]:checked', '#radio-button').val() == "2")
+                        console.log('album');
+                        //search_album($('#search').value);
+                }
+            }
+            if ($('input[name=re]:checked', '#radio-button').val() == undefined)
+                console.log("choose one type search 'artist', 'track' or 'album'");
+        }
+        else {
+            console.log('write something in the search bar');
+        }
+    });
 }
 $(document).ready(domready);
+
+function youtube_track(q) {
+    var request = gapi.client.youtube.search.list({
+        q: q,
+        part: 'snippet'
+    });
+    request.execute(function(response) {
+        console.log(response.result);
+        $('#search-result').empty();
+        for (var i=0; i < response.result.items.length; i++) {
+            if (response.result.items[i].id.kind == "youtube#video") {
+                var channel = response.result.items[i].snippet.channelTitle;
+                var legit = channel.slice(channel.length-4, channel.length);
+                if (legit == "VEVO"){
+                    
+                    $('#search-result').css('display', 'block');
+                    $('#search-result').append('<img src="' + response.result.items[i].snippet.thumbnails.medium.url + '" value="https://www.youtube.com/watch?v=' + response.result.items[i].id.videoId + '"><p>' + response.result.items[i].snippet.title + '</p><p>' + channel + '</p>');
+                }
+            }
+
+        }
+    });
+}
+
+function handleAPILoaded() {
+    $('button').attr('disabled', false);
+}
