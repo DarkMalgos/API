@@ -8,20 +8,45 @@
     <body>
         <div id="home">
             <video src="video/home.mp4" type="video/mp4" autoplay loop></video>
-            <img src="images/logo-01.png">
-			<div class="searchBar">
-            	<input id="search" type="text" placeholder="name of tracks, artist or album" value="work">
-            	<button disabled>GO !</button>
-			</div>
-            <div id="radio-button">
-                <input id="artist"type="radio" placeholder="Artist" name="re" value="0">
-                <input id="track" type="radio" name="re" value="1">
-                <input id="album" type="radio" name="re" value="2">
+            
+            <div id="tools">
+                <img src="images/logo-01.png">
+                
+                <div id="searchBar">
+                    <input id="search" type="text" placeholder="name of tracks, artist or album">
+
+                    <button disabled>GO !</button>
+                </div>
+
+                <form id="choice">
+
+                    <input type="radio" id="artist" class="radio" name="rad" value="0">
+                    <label id="0" name="lab" value="artist" class="text_button">ARTIST</label>
+
+                    <input type="radio" id="song" name="rad" value="1" class="radio">
+                    <label id="1" name="lab" value="song" class="text_button">TRACK</label>
+
+                    <input type="radio" id="album" name="rad" value="2" class="radio">
+                    <label id="2" name="lab" value="album" class="text_button">ALBUM</label>
+
+                </form>
+                
+            </div>
+
+        </div>
+        
+        
+        <div id="search-result">
+            <div id="youtube-result">
+            </div>
+            <div id="soundcloud-result">
             </div>
         </div>
-        <div id="toto"></div>
+        
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/jquery.index.js"></script>
+        <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+        <script src="js/jquery.index.js?4615481658"></script>
         <script src="js/auth.js"></script>
         <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
         </body>
