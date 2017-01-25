@@ -119,7 +119,7 @@ form{
 }
 
 #search-result {
-    display: inline-block;
+    display: block;
     overflow: hidden;
 }
 
@@ -151,7 +151,7 @@ form{
 #soundcloud-result {
     float: right;
     text-align: left;
-    margin-right: 150px;
+    margin-right: 80px;
 }
 
 #soundcloud-result ul {

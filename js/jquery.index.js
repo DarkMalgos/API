@@ -12,9 +12,10 @@
 function domready() {
     var allRadios = document.getElementsByName('rad'),
         allLabel = document.getElementsByName('lab'),
+        check = false,
         booRadio = null;
     
-    for(var x = 0; x < allLabel.length; x++){
+    for (var x=0; x < allLabel.length; x++){
         allLabel[x].onclick = function() {
             if (booRadio != null) {
                 $(booRadio).css('background', '#ff5500');
@@ -32,8 +33,10 @@ function domready() {
     
     $('button').click(function (){
         if ($('#search').val() != undefined && $('#search').val() != ''){
-            for (var i=0; i < allRadios.length; i++){
-                if ($('input[name=rad]:checked', '#choice').val() != undefined){
+            if ($('input[name=rad]:checked', '#choice').val() == undefined)
+                console.log("choose one type search 'artist', 'track' or 'album'");
+            else {
+                for (var i=0; i < allRadios.length; i++){
                     if (i == 0 && $('input[name=rad]:checked', '#choice').val() == "0")
                         console.log('artist');
                         //search_artist($('#search').value);
@@ -41,19 +44,39 @@ function domready() {
                         var q = $('#search').val();
                         youtube_track(q);
                         soundcloud_track(q);
-                        $('#search-result').css('display', 'block');
+                        check = true;
                     }
                     else if (i == 2  && $('input[name=rad]:checked', '#choice').val() == "2")
                         console.log('album');
                         //search_album($('#search').value);
                 }
+                
             }
-            if ($('input[name=rad]:checked', '#choice').val() == undefined)
-                console.log("choose one type search 'artist', 'track' or 'album'");
-        }
-        else {
+        } else {
             console.log('write something in the search bar');
         }
+    });
+    
+    $('#youtube-result').on('click', 'ul', function() {
+        var _url = $(this).attr('value');
+        var _channel = $($(this).find('p')[1]).html();
+        var _artiste;
+        for (var i=0; i < _channel.length; i++) {
+            if (i == 0)
+                _artiste = _channel.charAt(i);
+            else if (i < _channel.length-4)
+                _artiste += _channel.charAt(i);
+        }
+        $('#home').css('display', 'none');
+        $('#search-result').css('display', 'none');
+    });
+    
+    $('#soundcloud-result').on('click', 'ul', function() {
+        var _url = $(this).attr('value');
+        var _artiste = $($(this).find('p')[1]).html();
+        var _artiste_url = "http://soundcloud.com/" + _artiste;
+        $('#home').css('display', 'none');
+        $('#search-result').css('display', 'none');
     });
 }
 $(document).ready(domready);
@@ -71,13 +94,17 @@ function youtube_track(q) {
                 var legit = channel.slice(channel.length-4, channel.length);
                 if (legit == "VEVO"){
                     
-                    $('#youtube-result').append('<ul><li><img src="' + response.result.items[i].snippet.thumbnails.medium.url + '" value="https://www.youtube.com/watch?v=' + response.result.items[i].id.videoId + '"></li><li><p>' + response.result.items[i].snippet.title + '</p><p>' + channel + '</p><img src="images/youtube-logo.png"></li>');
+                    $('#youtube-result').append('<ul value="https://www.youtube.com/watch?v=' + response.result.items[i].id.videoId + '"><li><img src="' + response.result.items[i].snippet.thumbnails.medium.url + '"></li><li><p>' + response.result.items[i].snippet.title + '</p><p>' + channel + '</p><img src="images/youtube-logo.png"></li>');
                 }
             }
 
         }
     });
 
+}
+
+function youtube_iframe(){
+    
 }
 
 function soundcloud_track(q) {
@@ -89,18 +116,10 @@ function soundcloud_track(q) {
         SC.get('/tracks', { q: q, license: '', limit: page_size }).then(function(tracks) {
             $('#soundcloud-result').empty();
             for (var i=0; i < tracks.length; i++){
-                console.log(tracks[i]);
                 if (tracks[i].kind == "track"){
-                    console.log("toto");
-                    $('#soundcloud-result').append('<ul><li><img src="' + tracks[i].artwork_url + '" value="' + tracks[i].permalink_url + '"></li><li><p>' + tracks[i].title + '</p><p>' + tracks[i].user.username + '</p><img src="images/soundcloud-logo.png"></li>');
-                }
-                
+                    $('#soundcloud-result').append('<ul value="' + tracks[i].permalink_url + '"><li><img src="' + tracks[i].artwork_url + '"></li><li><p>' + tracks[i].title + '</p><p>' + tracks[i].user.permalink + '</p><img src="images/soundcloud-logo.png"></li>');
+                }  
             }
-            /*var track_url = tracks[0].permalink_url;
-            SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
-                console.log(oEmbed.html.slice(71, oEmbed.html.length - 11));
-                document.getElementsByTagName("iframe")[0].setAttribute('src', oEmbed.html.slice(71, oEmbed.html.length - 11));
-            });*/
         });
     }
 
