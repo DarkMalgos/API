@@ -36,19 +36,19 @@ function domready() {
             if ($('input[name=rad]:checked', '#choice').val() == undefined)
                 console.log("choose one type search 'artist', 'track' or 'album'");
             else {
+                var q = $('#search').val();
                 for (var i=0; i < allRadios.length; i++){
-                    if (i == 0 && $('input[name=rad]:checked', '#choice').val() == "0")
-                        console.log('artist');
-                        //search_artist($('#search').value);
-                    else if (i == 1 && $('input[name=rad]:checked', '#choice').val() == "1") {
-                        var q = $('#search').val();
+                    if (i == 0 && $('input[name=rad]:checked', '#choice').val() == "0") {
+                        youtube_artist(q);
+                        soundcloud_artist(q);
+                        $('footer').css('display', 'inline-block');
+                    } else if (i == 1 && $('input[name=rad]:checked', '#choice').val() == "1") {
                         youtube_track(q);
                         soundcloud_track(q);
                         $('footer').css('display', 'inline-block');
+                    } else if (i == 2  && $('input[name=rad]:checked', '#choice').val() == "2") {
+                        $('footer').css('display', 'inline-block');
                     }
-                    else if (i == 2  && $('input[name=rad]:checked', '#choice').val() == "2")
-                        console.log('album');
-                        //search_album($('#search').value);
                 }
                 
             }
@@ -178,6 +178,47 @@ function change_slide() {
     });
 }
 
+function youtube_artist(q) {
+    var request = gapi.client.youtube.search.list({
+        q: q,
+        part: 'snippet'
+    });
+    request.execute(function(response) {
+        $('#youtube-result').empty();
+        for (var i=0; i < response.result.items.length; i++) {
+            if (response.result.items[i].id.kind == "youtube#video") {
+                var channel = response.result.items[i].snippet.channelTitle;
+                var legit = channel.slice(channel.length-4, channel.length);
+                var good_artist = channel.slice(0, channel.length-4);
+                if (q.toUpperCase() == good_artist.toUpperCase()) {
+                    if (legit == "VEVO"){
+                        $('#youtube-result').append('<ul value="https://www.youtube.com/watch?v=' + response.result.items[i].id.videoId + '"><li><img src="' + response.result.items[i].snippet.thumbnails.medium.url + '"></li><li><p>' + response.result.items[i].snippet.title + '</p><p>' + channel + '</p><img src="images/youtube-logo.png"></li>');
+                    }
+                }
+            }
+
+        }
+    });
+
+}
+
+function soundcloud_artist(q) {
+        SC.initialize({
+            client_id: '1c1fbacee3dd327615fd1b22af834084'
+        });
+
+        var page_size = 5;
+        SC.get('/users', { q: q, license: '', limit: page_size }).then(function(tracks) {
+            $('#soundcloud-result').empty();
+            for (var i=0; i < tracks.length; i++){
+                if (tracks[i].kind == "user") {
+                    console.log(tracks[i]);
+                    $('#soundcloud-result').append('<ul value="' + tracks[i].permalink_url + '"><li><img src="' + tracks[i].avatar_url + '"></li><li><p>' + tracks[i].permalink + '</p><img src="images/soundcloud-logo.png"></li>');
+                }
+            }
+        });
+    }
+
 function youtube_track(q) {
     var request = gapi.client.youtube.search.list({
         q: q,
@@ -197,10 +238,6 @@ function youtube_track(q) {
         }
     });
 
-}
-
-function youtube_iframe(){
-    
 }
 
 function soundcloud_track(q) {
