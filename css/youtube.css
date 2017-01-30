@@ -25,7 +25,7 @@ iframe {
 
 #disco_bio {
     width: 100%; 
-    height: 509px; 
+    height: auto; 
     margin-top: 40px; 
     position: relative; 
 }
@@ -187,6 +187,8 @@ footer ul li{
     animation: anim1 2s; 
     animation-fill-mode: forwards;
     float: left;
+   
+    
 }
 
 #name-album{
@@ -203,15 +205,42 @@ footer ul li{
     
     
 }
+#category{
+    border-bottom: none;
+    font-weight: bold; 
+    padding-right: 20px;
+    list-style: none;
+    position: relative;
+    margin-top: 90px;
+    margin-bottom: 20px;
+}
+#category li {
+    display: inline-block;
+    margin-left: 20px;
+}
 
+#content2 .num_track{
+     border-bottom: solid 1px #e52d27;
+}
 #content2 .num_track li {
     display: inline-block;
-    padding-right: 20px; 
+    line-height: 25px; 
 }
 #content2 .num_track li {
     margin-left: 20px;
     display: inline-block;
     list-style: none;
+}
+#content2{
+    overflow-y: scroll;
+    position: relative;
+}
+#content3{
+   position: absolute;
+    width: 63%;
+    height: 100%;
+    left: 435px;
+   
 }
 
 .num_track{
@@ -220,23 +249,25 @@ footer ul li{
     position: relative;
 }
 
-#category{
-    margin-top: 90px;
-    margin-bottom: 20px;
-}
-
 .number_tracks{
-    width: 2%;
+   
+    width: 50px;
     text-align: right;
+    
 }
 
 .name_tracks{
-    width: 20%;
+    width: 68%;
     text-align: left;
+}
+.duree{
+    width: 50px;
+    text-align: right;
 }
 
 .play{
     width: 5%;
+    padding-left: 10px;
 }
 
 @-webkit-keyframes anim1 {
