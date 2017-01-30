@@ -19,8 +19,8 @@
     
     <div id="disco_bio">
         <ul>
-            <li id="disco">DISCOGRAPHIE</li>
-            <li id="bio">BIOGRAPHIE</li>
+            <a href="#"><li>DISCOGRAPHIE</li></a>
+            <a href="#"><li>BIOGRAPHIE</li></a>
         </ul>
 
         <div id="content">
@@ -52,12 +52,17 @@
         
     </footer>
     
-    
     <script     src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    
     <script src="../js/Swiper/dist/js/swiper.min.js"></script>
     
-    <script src="../js/youtube.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            slidesPerView: 4,
+            paginationClickable: true,
+            spaceBetween: 30
+        });
+    </script>
     
 </body>
 
