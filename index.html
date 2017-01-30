@@ -14,7 +14,7 @@
                 <img src="images/logo-01.png">
                 
                 <div id="searchBar">
-                    <input id="search" type="text" placeholder="name of tracks, artist or album">
+                    <input id="search" type="text" placeholder="name of tracks or artists">
 
                     <button disabled>GO !</button>
                 </div>
@@ -26,9 +26,6 @@
 
                     <input type="radio" id="song" name="rad" value="1" class="radio">
                     <label id="1" name="lab" value="song" class="text_button">TRACK</label>
-
-                    <input type="radio" id="album" name="rad" value="2" class="radio">
-                    <label id="2" name="lab" value="album" class="text_button">ALBUM</label>
 
                 </form>
                 
@@ -55,11 +52,23 @@
             </ul>
 
             <div id="content">
-
-                <div class="swiper-container">
-                    <div id=swipper class="swiper-wrapper"></div>
-                    <div class="swiper-pagination"></div>
+                <div id="no-discography">
+                    <p> :-( Il n'a pas de discographie de disponible</p>
+                    <a href="#">Cliquez ici pour lancer la recherche</a>
                 </div>
+
+                 <!-- Swiper -->
+                <div class="swiper-container">
+                    <div id="swipper" class="swiper-wrapper">
+                    </div>
+                    
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>  
+                    
+                </div>
+            </div>
+    
                 
             </div>
             
@@ -74,14 +83,11 @@
                 
                 <form id="choice">
 
-                    <input type="radio" id="artist" class="radio" name="rad" value="0">
                     <label id="0" name="lab" value="artist" class="text_button">ARTIST</label>
 
-                    <input type="radio" id="song" name="rad" value="1" class="radio">
                     <label id="1" name="lab" value="song" class="text_button">TRACK</label>
 
-                    <input type="radio" id="album" name="rad" value="2" class="radio">
-                    <label id="2" name="lab" value="album" class="text_button">ALBUM</label>
+        
 
                 </form>
             </div>
@@ -100,10 +106,10 @@
                 
             
         </footer>
+        <script src="js/Swiper/dist/js/swiper.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
-        <script src="js/Swiper/dist/js/swiper.min.js"></script>
-        <script src="js/jquery.index.js?4615481658"></script>
+        <script src="js/jquery.index.js?2345632345"></script>
         <script src="js/auth.js"></script>
         <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
         </body>

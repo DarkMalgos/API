@@ -77,16 +77,29 @@ function domready() {
         var spotify_url = "https://api.spotify.com/v1/search?query=artist:" + _artiste + "&&limit=50&type=album";
         $.get(spotify_url, function(data){
             for (var i=0; i < data.albums.items.length; i++){
-                $('#swipper').append('<div class="swiper-slide"><img src=' + data.albums.items[i].images[1].url + ' data-id=' + data.albums.items[i].id + ' ><p>' + data.albums.items[i].name + '</p></div>');
+                $('#swipper').append('<div class="swiper-slide"><img src=' + data.albums.items[i].images[1].url + ' data-id=' + data.albums.items[i].id + ' ></div>');
                 
                 if(i === data.albums.items.length-1){
                     //SWIPPER
-                    var swiper = new Swiper('.swiper-container', {
+                      var swiper = new Swiper('.swiper-container', {
                         pagination: '.swiper-pagination',
-                        slidesPerView: 4,
-                        paginationClickable: true,
-                        spaceBetween: 30
+                        nextButton: '.swiper-button-next',
+                        prevButton: '.swiper-button-prev',
+                        pagination: '.swiper-pagination',
+                        effect: 'coverflow',
+                        initialSlide : 3,
+                        grabCursor: true,
+                        centeredSlides: true,
+                        slidesPerView: 'auto',
+                        coverflow: {
+                            rotate: 50,
+                            stretch: 0,
+                            depth: 100,
+                            modifier: 1,
+                            slideShadows : true
+                        }
                     });
+                    
                     $(".swiper-slide").click(change_slide);
                 }
             }
@@ -112,17 +125,28 @@ function domready() {
         var spotify_url = "https://api.spotify.com/v1/search?query=artist:" + _artiste + "&&limit=50&type=album";
         $.get(spotify_url, function(data){
             for (var i=0; i < data.albums.items.length; i++){
-                $('#swipper').append('<div class="swiper-slide"><img src=' + data.albums.items[i].images[1].url + ' data-id=' + data.albums.items[i].id + ' ><p>' + data.albums.items[i].name + '</p></div>');
+                $('#swipper').append('<div class="swiper-slide"><img src=' + data.albums.items[i].images[1].url + ' data-id=' + data.albums.items[i].id + ' ></div>');
                 
                 if(i === data.albums.items.length-1){
-                    //SWIPPER
-                    var swiper = new Swiper('.swiper-container', {
+                     //SWIPPER
+                      var swiper = new Swiper('.swiper-container', {
                         pagination: '.swiper-pagination',
-                        slidesPerView: 4,
-                        paginationClickable: true,
-                        spaceBetween: 30
+                        nextButton: '.swiper-button-next',
+                        prevButton: '.swiper-button-prev',
+                        pagination: '.swiper-pagination',
+                        effect: 'coverflow',
+                        initialSlide : 3,
+                        grabCursor: true,
+                        centeredSlides: true,
+                        slidesPerView: 'auto',
+                        coverflow: {
+                            rotate: 50,
+                            stretch: 0,
+                            depth: 100,
+                            modifier: 1,
+                            slideShadows : true
+                        }
                     });
-                    $(".swiper-slide").click(change_slide);
                 }
             }
             if (data.albums.items.length < 1)
@@ -192,23 +216,34 @@ function domready() {
 }
 $(document).ready(domready);
 
-function change_slide() {
-    var _ids = $(this).find('img').attr('data-id');
-    album = $(this).find('img').attr('src');
-        
-    $("#content").css('display', 'none');
-    console.log(album);
-    $('#content2').append('<img id="albumImg" src="' + album + '">');
-    var _url = "https://api.spotify.com/v1/albums/?ids=" + _ids ;
-    $.get(_url, function(data) {
-        console.log(data); // affiche le résultat au format JSON
-        $('#content2').append('<p id="name-album">' + data.albums[0].name + '-</p><p id="name-artist">' + data.albums[0].artists[0].name + '</p><ul id="category" class="num_track"><li class ="number_tracks">N°</li><li class="name_tracks">Titre</li><li>Artiste</li><li>Album</li><li>Itunes</li></ul>');
-        for (var i=0; i < data.albums[0].tracks.items.length; i++) {
-            $('#content2').append('<ul class="num_track"><li class="number_tracks">' + (i+1) + '</li><li class="name_tracks">' + data.albums[0].tracks.items[i].name + '<li class="play"><img src="../images/play-red.png"</li></ul>');
-        }
-        $('#content2').css('display', 'block');
-    });
+    function convertMillisecondsToDigitalClock(ms) {
+    minutes = Math.floor((ms % 3600000) / 60000), // 1 Minutes = 60000 Milliseconds
+    seconds = Math.floor(((ms % 360000) % 60000) / 1000) // 1 Second = 1000 Milliseconds
+        return {
+        minutes : minutes,
+        seconds : seconds,
+        clock : minutes + ":" + seconds
+    };
 }
+
+function change_slide() {
+        var _ids = $(this).find('img').attr('data-id');
+        album = $(this).find('img').attr('src');
+        
+        $("#content").css('display', 'none');
+        console.log(album);
+        $('#content2').append('<img id="albumImg" src="' + album + '">');
+        var _url = "https://api.spotify.com/v1/albums/?ids=" + _ids ;
+             $.get(_url, function(data){ 
+                console.log(data); // affiche le résultat au format JSON
+                $('#content2').append('<div id="content3"><p id="name-album">' + data.albums[0].name + '-</p><p id="name-artist">' + data.albums[0].artists[0].name + '</p><ul id="category"><li class ="number_tracks">N°</li><li class="name_tracks">Titre</li><li>Durée</li></ul>');
+                for (var i=0; i < data.albums[0].tracks.items.length; i++) {
+                    console.log("toto");
+                    $('#content3').append('<ul class="num_track"><li class="number_tracks">' + (i+1) + '</li><li class="name_tracks">' + data.albums[0].tracks.items[i].name + '</li><li class="duree">' + convertMillisecondsToDigitalClock(data.albums[0].tracks.items[i].duration_ms).clock + '</li> <li class="play"><img src="../images/play-red.png"</li></ul></div>');
+                }
+                $('#content2').css('display', 'block');
+        });
+    }
 
 function youtube_artist(q) {
     var request = gapi.client.youtube.search.list({

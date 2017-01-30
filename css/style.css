@@ -8,6 +8,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+/*HOME*/
 #home {
     width: 100%;
     height: 100%;
@@ -81,7 +82,7 @@ button:hover {
     color: #ff5500;
 }
 
-/* RADIO BUTTONS */
+    /* RADIO BUTTONS */
 
 label {
     width: 120px;
@@ -119,20 +120,20 @@ form{
     z-index: 3;
     position: relative; 
     margin-top: 40px;
-    width: 70%;
+    width: 45%;
     left: 50%;
     transform: translateX(-50%);
 } 
 
 
-/* hide input */
+    /* hide input */
 .radio {
     display: none;
 	position: relative;
     z-index: 3;
 }
 
-/*SEARCH*/
+/*RESULT-SEARCH*/
 #search-result {
     display: block;
     overflow: hidden;
@@ -235,7 +236,7 @@ iframe {
 
 #disco_bio {
     width: 100%; 
-    height: 509px; 
+    height: auto; 
     margin-top: 40px; 
     position: relative;
     display: none;
@@ -244,9 +245,32 @@ iframe {
 #content {
     width: 95%;
     height: 450px;
-    margin: 40px auto; 
+    margin: 0px auto; 
     border: solid 2px #e52d27;
     display: block;
+}
+
+#no-discography {
+    top: 50%; 
+    left: 50%; 
+    transform: translateX(-50%) translateY(-50%); 
+    position: absolute; 
+    display: block; 
+}
+
+#no-discography p {
+    text-align: center; 
+    font-size: 30px; 
+}
+
+
+#no-discography a {
+    text-align: center;
+    left: 50%;
+    font-size: 30px;
+    text-decoration: none;
+    margin: auto 46px;
+    color: #ff5500;
 }
 
 #content2 {
@@ -286,46 +310,26 @@ iframe {
 }
 #menu{
     margin-left: 30px;
-    margin-bottom: -40px; 
+    margin-top: 60px;
+    margin-bottom: -40px;
 }
 
     /*SWIPPER*/
 .swiper-container {
-    width: 92.4%;
-    margin-top: 90px; 
+    width: 100%;
+    height: 454px; 
+    padding-top: 70px;
     
-}
-
-.swiper-container img {
-    width: 250px; 
 }
 
 .swiper-slide {
-    text-align: center;
-    background: #fff;
-    
-     /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
 }
 
-.swiper-pagination { 
-    position: absolute; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    padding: 15px; 
-}
-
+/*DISCOGRAPHY - ALBUM*/
 
 #albumImg{
     margin-left: 25px;
@@ -334,7 +338,7 @@ iframe {
     height: auto;
     animation: anim1 2s; 
     animation-fill-mode: forwards;
-    float: left;
+    float: left;   
 }
 
 #name-album{
@@ -347,17 +351,47 @@ iframe {
 #name-artist{
     font-size: 30px;
     float: left; 
-    margin-top: 30px;  
+    margin-top: 30px;
+    
+    
+}
+#category{
+    border-bottom: none;
+    font-weight: bold; 
+    padding-right: 20px;
+    list-style: none;
+    position: relative;
+    margin-top: 90px;
+    margin-bottom: 20px;
+}
+#category li {
+    display: inline-block;
+    margin-left: 20px;
 }
 
+#content2 .num_track{
+     border-bottom: solid 1px #e52d27;
+}
 #content2 .num_track li {
     display: inline-block;
-    padding-right: 20px; 
+    line-height: 25px; 
 }
 #content2 .num_track li {
     margin-left: 20px;
     display: inline-block;
     list-style: none;
+    margin-top: 5px; 
+}
+#content2{
+    overflow-y: scroll;
+    position: relative;
+}
+#content3{
+   position: absolute;
+    width: 63%;
+    height: 100%;
+    left: 435px;
+   
 }
 
 .num_track{
@@ -366,24 +400,36 @@ iframe {
     position: relative;
 }
 
-#category{
-    margin-top: 90px;
-    margin-bottom: 20px;
+#content2 .num_track:last-child{
+    border: none; 
 }
 
 .number_tracks{
-    width: 2%;
+   
+    width: 50px;
     text-align: right;
+    
 }
 
 .name_tracks{
-    width: 20%;
+    width: 68%;
     text-align: left;
+}
+.duree{
+    width: 50px;
+    text-align: right;
 }
 
 .play{
     width: 5%;
+    padding-left: 10px;
 }
+
+.play img{
+    width: 18px; 
+    padding-left: 10px;
+}
+
 
 @-webkit-keyframes anim1 {
     from {
@@ -393,6 +439,7 @@ iframe {
         width: 405px;         
     }
 }
+ 
  
 
 

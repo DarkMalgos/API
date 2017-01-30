@@ -93,12 +93,6 @@ ul {
     align-items: center;
 }
 
-.swiper-container img:hover {
-    color: black; 
-    opacity: 0.8; 
-    
-}
-
 .swiper-pagination { 
     position: absolute; 
     left: 50%; 
@@ -126,9 +120,7 @@ ul {
 #name-artist{
     font-size: 30px;
     float: left; 
-    margin-top: 30px;
-    
-    
+    margin-top: 30px;  
 }
 
 #content2 .num_track li {
