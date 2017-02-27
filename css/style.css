@@ -1,8 +1,14 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
+@fontface{
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*HOME*/
 #home {
     width: 100%;
     height: 100%;
@@ -41,22 +47,23 @@ video {
     position: relative;
     display: inline-block;
     z-index: 3;
-    width: 100%
+    width: 100%;
 }
 
-#search {
+#searchBar input {
+    height: 50px;
     width: 90%;
-    height: 6%;
     border-radius: 4px 0px 0px 4px; 
     border: none; 
     padding: 10px; 
+    font-size: 15px;
 }
 
 button {
     position: relative;
     z-index: 3;
     width: 10%;
-    height: 6%;
+    height: 50px;
     float: right; 
     border-radius: 0px 4px 4px 0px; 
     border: none; 
@@ -66,8 +73,12 @@ button {
     font-size: 16px;
 }
 
+button:hover {
+    background-color: white; 
+    color: #ff5500;
+}
 
-/* RADIO BUTTONS */
+    /* RADIO BUTTONS */
 
 label {
     width: 120px;
@@ -105,20 +116,409 @@ form{
     z-index: 3;
     position: relative; 
     margin-top: 40px;
-    width: 70%;
+    width: 45%;
     left: 50%;
     transform: translateX(-50%);
 } 
 
 
-/* hide input */
+    /* hide input */
 .radio {
     display: none;
 	position: relative;
     z-index: 3;
 }
 
-#toto {
+/*RESULT-SEARCH*/
+#search-result {
+    display: block;
+    overflow: hidden;
+}
+
+#youtube-result {
+    float: left;
+    text-align: left;
+    display: inline-block;
+    margin-left: 5%;
+    width: 55%;
+}
+
+#youtube-result ul {
+    padding-top: 25px;
+}
+
+.logo-youtube {
+    margin-top: 15px;
+    width: 80px; 
+    height: auto;
+}
+
+.logo-soundcloud {
+    margin-top: 15px;
+    width: 80px; 
+    height: auto;
+}
+
+#youtube-result ul li {
+    display: inline-block;
+    list-style: none;
+}
+
+#youtube-result ul li:last-child  {
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+}
+
+#youtube-result ul li p:first-child {
+    width: 80%; 
+    font-size: 18px; 
+    color: #e52d27;
+}
+
+#soundcloud-result ul li p:first-child {
+    width: 80%; 
+    font-size: 18px; 
+    color: #ff5500;
+}
+
+.img-youtube {
+    margin-right: 25px; 
+}
+
+.img-soundcloud {
+    margin-right: 25px; 
+}
+
+#soundcloud-result {
+    float: right;
+    text-align: left;
+    margin-right: 5%;
+    width: 35%;
+}
+
+#soundcloud-result ul {
+    padding-top: 25px;
+}
+
+#soundcloud-result ul li {
+    display: inline-block;
+    list-style: none;
+}
+
+#soundcloud-result ul li {
+    vertical-align: top;
+}
+
+#soundcloud-result ul li:last-child p:first-child {
+    width: 300px;
+}
+
+#result-select {
     width: 100%;
-    height: 500px;
+    height: 378px;
+    background-color: black; 
+    display: none;
+    justify-content: center;
+}
+
+/*IFRAME*/
+#disco_bio {
+    width: 100%; 
+    height: auto; 
+    margin-top: 40px; 
+    position: relative;
+    display: none;
+}
+
+#content {
+    width: 95%;
+    height: 450px;
+    margin: 40px auto; 
+    border: solid 2px #e52d27;
+    display: block;
+}
+
+#content2 {
+    width: 95%;
+    height: 450px;
+    margin: 40px auto; 
+    border: solid 2px #e52d27;
+    display: none;
+}
+
+#content4{
+    width: 95%;
+    height: 450px;
+    margin: 40px auto; 
+    border: solid 2px #e52d27;
+    display: none;
+}
+
+#no-discography {
+    top: 50%; 
+    left: 50%; 
+    transform: translateX(-50%) translateY(-50%); 
+    position: absolute; 
+    display: none; 
+}
+
+#no-discography p {
+    text-align: center; 
+    font-size: 30px; 
+}
+
+
+#no-discography a {
+    text-align: center;
+    left: 50%;
+    font-size: 30px;
+    text-decoration: none;
+    margin: auto 46px;
+    color: #ff5500;
+}
+
+#content2 {
+    width: 95%;
+    height: 450px;
+    margin: 40px auto; 
+    border: solid 2px #e52d27;
+    display: none;
+}
+
+#disco {
+    background-color: #e52d27;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+    display: inline-block;
+    padding: 18px;   
+    margin-right: 15px; 
+    font-family: 'Montserrat'; 
+    list-style: none; 
+    text-decoration: none; 
+}
+
+#bio {
+    display: inline-block;
+    color: black; 
+    padding: 18px;   
+    margin-right: 15px; 
+    font-family: 'Montserrat'; 
+    list-style: none; 
+    text-decoration: none; 
+}
+
+#bio:hover {
+    background-color: #e52d27;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+}
+#menu{
+    margin-left: 30px;
+    margin-top: 60px;
+    margin-bottom: -40px;
+}
+
+    /*SWIPPER*/
+.swiper-container {
+    width: 100%;
+    height: 454px; 
+    padding-top: 70px;
+    
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+}
+
+/*DISCOGRAPHY - ALBUM*/
+
+#albumImg{
+    margin-left: 25px;
+    margin-top : 25px;
+    width: 405px;
+    height: auto;
+    animation: anim1 2s; 
+    animation-fill-mode: forwards;
+    float: left;   
+}
+
+#name-album{
+    font-size: 30px;
+    float: left; 
+    margin-left: 20px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+#name-artist{
+    font-size: 30px;
+    float: left; 
+    margin-top: 30px;
+    
+    
+}
+#category{
+    border-bottom: none;
+    font-weight: bold; 
+    padding-right: 20px;
+    list-style: none;
+    position: relative;
+    margin-top: 90px;
+    margin-bottom: 20px;
+}
+#category li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#content2 .num_track{
+     border-bottom: solid 1px #e52d27;
+}
+#content2 .num_track li {
+    display: inline-block;
+    line-height: 25px; 
+}
+#content2 .num_track li {
+    margin-left: 20px;
+    display: inline-block;
+    list-style: none;
+    margin-top: 5px; 
+}
+#content2{
+    overflow-y: scroll;
+    position: relative;
+}
+#content3{
+   position: absolute;
+    width: 63%;
+    height: 100%;
+    left: 435px;
+   
+}
+
+.num_track{
+    padding-right: 20px;
+    list-style: none;
+    position: relative;
+}
+
+#content2 .num_track:last-child{
+    border: none; 
+}
+
+.number_tracks{
+   
+    width: 50px;
+    text-align: right;
+    
+}
+
+.name_tracks{
+    width: 68%;
+    text-align: left;
+}
+.duree{
+    width: 50px;
+    text-align: right;
+}
+
+.play{
+    width: 5%;
+    padding-left: 10px;
+}
+
+.play img{
+    width: 18px; 
+    padding-left: 10px;
+}
+
+
+@-webkit-keyframes anim1 {
+    from {
+        width: 250px;             
+    }
+    to   {
+        width: 405px;         
+    }
+}
+ 
+ 
+
+
+/*FOOTER*/
+
+footer {
+    height: 280px; 
+    width: 100%;
+    background-color: #ff5500; 
+    margin-top: 50px; 
+    display: none;
+}
+
+#logo_social{
+    position: relative;
+    margin-left: 10px;
+}
+
+#logo{
+    width: 300px;
+    height: auto;
+    margin-top: 20px;
+    display: inline-block;
+    margin-left: 40px; 
+    margin-bottom: 15px; 
+}
+
+.social{
+    width: 50px;
+    height: auto;
+    margin-left: 30px;  
+}
+
+footer ul li{
+    display: inline;
+}
+
+#searchBarf {
+    float: right; 
+    margin-top: 95px;
+    margin-right: 40px;
+}
+
+#searchBarf input{
+    width: 750px;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    padding-left: 10px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+#searchBarf button{
+    width: 70px;
+    height: 50px;
+    margin-left: -5px;
+    background-color: white;
+    color: #ff5500;
+    border: none;
+    padding-right: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#searchBarf button:hover{
+    background-color: #ff5500; 
+    color: white;
+    border: 3px solid white;
+    border-radius: 0px 5px 5px 0px; 
+}
+
+#searchBarf label {
+    border: 3px solid white;
 }
