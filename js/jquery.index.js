@@ -162,7 +162,7 @@ function domready() {
     
     $('#soundcloud-result').on('click', 'ul', function() {
         var _url = $(this).attr('value');
-        var _artiste = $($(this).find('p')[0]).html();
+        _artiste = $($(this).find('p')[0]).html();
         var _artiste_url = "http://soundcloud.com/" + _artiste;
         $('#result-select').append('<iframe width="100%" height="400" src=https://w.soundcloud.com/player/?visual=true&url=' + _url + '&show_artwork=true&auto_play=trueframeborder="c0" allowfullscreen></iframe>');
         var spotify_url = "https://api.spotify.com/v1/search?query=artist:" + _artiste + "&&limit=50&type=album";
@@ -269,7 +269,12 @@ function domready() {
                         blurb.find('.mw-ext-cite-error').remove();
                         $('#content4').html($(blurb).find('p'));
                     }
-
+                    var spotify_url = "https://api.spotify.com/v1/search?query=artist:" + _artiste + "&&limit=1&type=artist";
+                    $.get(spotify_url, function(data1){
+                        console.log(data1);
+                        $('#content4').append('<img id="img-bio" src="' + data1.artists.items[0].images[1].url + '">'); 
+                    });
+                    
                },
                 error: function (errorMessage) {
                 }
@@ -337,14 +342,30 @@ function change_slide() {
         $('#content2').empty();
         $('#content2').append('<img id="albumImg" src="' + album + '">');
         var _url = "https://api.spotify.com/v1/albums/?ids=" + _ids ;
-             $.get(_url, function(data){ 
-                $('#content2').append('<div id="content3"><p id="name-album">' + data.albums[0].name + '-</p><p id="name-artist">' + data.albums[0].artists[0].name + '</p><ul id="category"><li class ="number_tracks">N°</li><li class="name_tracks">Titre</li><li>Durée</li></ul>');
+             $.get(_url, function(data){
+                 console.log(data);
+                $('#content2').append('<div id="content3"><audio id="player-audio"></audio><p id="name-album">' + data.albums[0].name + '-</p><p id="name-artist">' + data.albums[0].artists[0].name + '</p><ul id="category"><li class ="number_tracks">N°</li><li class="name_tracks">Titre</li><li>Durée</li><li>Extrait(s)</li></ul>');
                 for (var i=0; i < data.albums[0].tracks.items.length; i++) {
-                    $('#content3').append('<ul class="num_track"><li class="number_tracks">' + (i+1) + '</li><li class="name_tracks">' + data.albums[0].tracks.items[i].name + '</li><li class="duree">' + convertMillisecondsToDigitalClock(data.albums[0].tracks.items[i].duration_ms).clock + '</li> <li class="play"><img src="images/play-red.png"</li></ul></div>');
+                    $('#content3').append('<ul class="num_track"><li class="number_tracks">' + (i+1) + '</li><li class="name_tracks">' + data.albums[0].tracks.items[i].name + '</li><li class="duree">' + convertMillisecondsToDigitalClock(data.albums[0].tracks.items[i].duration_ms).clock + '</li> <li class="play" data=' + data.albums[0].tracks.items[i].preview_url + '><img src="images/play-red.png"></li></ul></div>');
                 }
-                $('#content2').css('display', 'block');
+                $('#content2').css('display', 'flex');
         });
     }
+
+$('#content2').on('click', 'ul li:last-child', function () {
+    if ($($(this).find('img')).attr('src') == "images/play-red.png") {
+        $($(this).find('img')).attr('src', 'images/pause-red.png');
+        var url_audio = $(this).attr('data');
+        var player = document.querySelector('#player-audio');
+        $('#player-audio').attr('src', url_audio);
+        $('#player-audio').attr('type', 'audio/mp3');
+        player.play();
+    } else {
+        $($(this).find('img')).attr('src', 'images/play-red.png');
+        var player = document.querySelector('#player-audio');
+        player.pause();
+    }
+});
 
 function youtube_artist(q) {
     var request = gapi.client.youtube.search.list({

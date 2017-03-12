@@ -239,20 +239,32 @@ form{
     display: block;
 }
 
-#content2 {
-    width: 95%;
-    height: 450px;
-    margin: 40px auto; 
-    border: solid 2px #e52d27;
-    display: none;
+#content4 {
+   width: 95%;
+   height: 450px auto;
+   margin: 40px auto;
+   border: solid 2px #e52d27 ;
+   display: none;
+   overflow: hidden;
+   position: relative;
 }
 
-#content4{
-    width: 95%;
-    height: 450px;
-    margin: 40px auto; 
-    border: solid 2px #e52d27;
-    display: none;
+#content4 p {
+   padding: 50px;
+   float: left;
+   width: 50%;
+   
+}
+
+#content4 p:nth-child(2) {
+   padding-top: 0;
+   padding-bottom: 0;
+}
+
+#img-bio {
+    width: 400px;
+    margin: 50px 0;
+    margin-left: 50px;
 }
 
 #no-discography {
@@ -280,7 +292,6 @@ form{
 
 #content2 {
     width: 95%;
-    height: 450px;
     margin: 40px auto; 
     border: solid 2px #e52d27;
     display: none;
@@ -339,11 +350,11 @@ form{
 #albumImg{
     margin-left: 25px;
     margin-top : 25px;
+    margin-bottom: 25px;
     width: 405px;
     height: auto;
     animation: anim1 2s; 
-    animation-fill-mode: forwards;
-    float: left;   
+    animation-fill-mode: forwards;   
 }
 
 #name-album{
@@ -387,16 +398,12 @@ form{
     list-style: none;
     margin-top: 5px; 
 }
-#content2{
-    overflow-y: scroll;
-    position: relative;
-}
+
 #content3{
-   position: absolute;
+    display: inline-block;
     width: 63%;
-    height: 100%;
-    left: 435px;
-   
+    margin-left: 85px;
+    margin-bottom: 20px;
 }
 
 .num_track{
